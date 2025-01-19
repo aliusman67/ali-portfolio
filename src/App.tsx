@@ -22,5 +22,9 @@ function App() {
     </Router>
   );
 }
+<<<<<<< HEAD
 
 export default App;
+=======
+export default App;
+>>>>>>> refs/remotes/origin/main
