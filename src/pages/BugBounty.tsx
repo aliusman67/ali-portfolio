@@ -46,35 +46,35 @@ function BugBounty() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div className="terminal">
         <div className="terminal-header">
           <div className="terminal-dot bg-red-500"></div>
           <div className="terminal-dot bg-yellow-500"></div>
           <div className="terminal-dot bg-green-500"></div>
-          <span className="ml-2 text-sm opacity-50"><b>Bug Bounty Hunting</b></span>
+          <span className="ml-2 text-sm opacity-50">bug-bounty-hunting</span>
         </div>
 
-        <div className="space-y-6 p-4">
-          <div className="flex items-center gap-2 text-xl font-bold mb-6">
-            <Bug className="w-8 h-8 text-green-500" />
+        <div className="space-y-6 p-4 sm:p-6">
+          <div className="flex items-center gap-2 text-lg sm:text-xl font-bold mb-6">
+            <Bug className="w-6 h-6 sm:w-8 sm:h-8 text-green-500" />
             <h1>Bug Bounty Hunting</h1>
           </div>
 
-          <p className="text-green-400/80 mb-8">
+          <p className="text-green-400/80 text-sm sm:text-base mb-8">
             Professional bug bounty hunter with a track record of discovering high-impact vulnerabilities across major platforms.
           </p>
 
-          <div className="grid gap-6">
+          <div className="grid gap-4 sm:gap-6">
             {methodologies.map((method, index) => {
               const Icon = method.icon;
               return (
-                <div key={index} className="border border-green-500/30 rounded-lg p-4 hover:border-green-500/60 transition-all">
+                <div key={index} className="border border-green-500/30 rounded-lg p-4 sm:p-6 hover:border-green-500/60 transition-all">
                   <div className="flex items-center gap-3 mb-3">
-                    <Icon className="w-6 h-6 text-green-500" />
-                    <h2 className="text-lg font-bold">{method.title}</h2>
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-green-500" />
+                    <h2 className="text-base sm:text-lg font-bold">{method.title}</h2>
                   </div>
-                  <p className="text-green-400/80 mb-4">{method.description}</p>
+                  <p className="text-green-400/80 text-sm sm:text-base mb-4">{method.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {method.techniques.map((technique, techIndex) => (
                       <a
@@ -82,7 +82,9 @@ function BugBounty() {
                         href={technique.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm px-3 py-1 rounded-full border border-green-500/30 bg-green-500/10 hover:bg-green-500/20 hover:border-green-500/60 transition-all cursor-pointer"
+                        className="text-xs sm:text-sm px-2 sm:px-3 py-1 rounded-full border border-green-500/30 
+                                 bg-green-500/10 hover:bg-green-500/20 hover:border-green-500/60 
+                                 transition-all cursor-pointer whitespace-nowrap"
                       >
                         {technique.name}
                       </a>
@@ -91,6 +93,17 @@ function BugBounty() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="mt-8 p-4 sm:p-6 border border-green-500/30 rounded-lg bg-green-500/5">
+            <h3 className="text-base sm:text-lg font-bold mb-3">Tools & Methodologies</h3>
+            <ul className="list-disc list-inside space-y-2 text-sm sm:text-base text-green-400/80">
+              <li>OWASP Top 10 & WSTG</li>
+              <li>Custom Exploitation Frameworks</li>
+              <li>Advanced Web Proxies</li>
+              <li>Security Headers Analysis</li>
+              <li>API Security Testing</li>
+            </ul>
           </div>
         </div>
       </div>

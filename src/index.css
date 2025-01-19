@@ -3,31 +3,80 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply antialiased;
+  }
+  
   body {
-    @apply bg-black text-green-500 font-mono;
+    @apply bg-black text-green-500 font-mono overflow-x-hidden;
+  }
+
+  /* Improved text readability */
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
   }
 }
 
-.terminal {
-  @apply bg-black/90 backdrop-blur-sm border border-green-500/30 rounded-lg p-6 shadow-lg shadow-green-500/20;
+@layer components {
+  .terminal {
+    @apply bg-black/90 backdrop-blur-sm border border-green-500/30 
+           rounded-lg shadow-lg shadow-green-500/20
+           w-full overflow-hidden;
+  }
+
+  .terminal-header {
+    @apply flex items-center gap-2 p-2 sm:p-3 
+           border-b border-green-500/30;
+  }
+
+  .terminal-dot {
+    @apply w-2 h-2 sm:w-3 sm:h-3 rounded-full 
+           transition-all duration-200;
+  }
+
+  .command-prompt {
+    @apply text-green-500 opacity-70 
+           text-sm sm:text-base 
+           whitespace-nowrap;
+  }
+
+  .command-output {
+    @apply text-green-400 mt-2 
+           text-sm sm:text-base;
+  }
+
+  /* Card styles */
+  .card {
+    @apply border border-green-500/30 rounded-lg p-4 
+           hover:border-green-500/60 transition-all
+           bg-black/50 backdrop-blur-sm;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply px-4 py-2 rounded-lg
+           border border-green-500/30
+           hover:border-green-500/60
+           transition-all duration-200
+           text-sm sm:text-base
+           flex items-center gap-2;
+  }
+
+  /* Tag styles */
+  .tag {
+    @apply text-xs sm:text-sm
+           px-2 sm:px-3 py-1
+           rounded-full
+           border border-green-500/30
+           bg-green-500/10
+           hover:bg-green-500/20
+           hover:border-green-500/60
+           transition-all
+           whitespace-nowrap;
+  }
 }
 
-.terminal-header {
-  @apply flex items-center gap-2 mb-4 border-b border-green-500/30 pb-2;
-}
-
-.terminal-dot {
-  @apply w-3 h-3 rounded-full;
-}
-
-.command-prompt {
-  @apply text-green-500 opacity-70;
-}
-
-.command-output {
-  @apply text-green-400 mt-2;
-}
-
+/* Animations */
 .blink {
   animation: blink 1s step-end infinite;
 }
@@ -35,5 +84,61 @@
 @keyframes blink {
   50% {
     opacity: 0;
+  }
+}
+
+/* Responsive grid layouts */
+@media (max-width: 640px) {
+  .grid {
+    @apply grid-cols-1 gap-4;
+  }
+}
+
+/* Improved scrollbar styling */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-black/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-green-500/30 rounded-full 
+         hover:bg-green-500/50 
+         transition-colors;
+}
+
+/* Mobile optimizations */
+@media (max-width: 640px) {
+  .terminal {
+    @apply mx-2;
+  }
+
+  .terminal-header {
+    @apply p-2;
+  }
+
+  .command-prompt {
+    @apply text-xs;
+  }
+
+  .command-output {
+    @apply text-sm;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .terminal {
+    @apply mx-4;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .btn, .tag {
+    @apply active:bg-green-500/20 
+           active:border-green-500/60;
   }
 }

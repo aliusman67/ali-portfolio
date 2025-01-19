@@ -10,7 +10,6 @@ function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Focus input when component mounts
     if (inputRef.current) {
       inputRef.current.focus();
     }
@@ -21,7 +20,6 @@ function Home() {
     setCurrentCommand('');
     setShowPrompt(true);
     
-    // Scroll to bottom
     if (containerRef.current) {
       containerRef.current.scrollTop = containerRef.current.scrollHeight;
     }
@@ -40,10 +38,10 @@ function Home() {
           <div className="command-output">
             <div className="flex items-center gap-2 text-xl font-bold mb-4">
               <Target className="w-6 h-6 text-green-500" />
-              <span>Ali Usman - Red Team Operator & Penetration Tester</span>
+              <span className="text-base sm:text-xl">Ali Usman - Red Team Operator & Penetration Tester</span>
             </div>
 
-            <p className="mb-6">
+            <p className="mb-6 text-sm sm:text-base">
               Elite red team operator and bug bounty hunter specializing in advanced adversary simulation and security assessments. 
               Proven track record in discovering critical vulnerabilities and conducting sophisticated red team operations.
             </p>
@@ -54,7 +52,7 @@ function Home() {
                   <Sword className="w-5 h-5 text-green-500" />
                   <h2>Offensive Security Skills</h2>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
                   {[
                     "Red Teaming",
                     "Advanced Penetration Testing",
@@ -77,7 +75,7 @@ function Home() {
                   <Target className="w-5 h-5 text-green-500" />
                   <h2>Operations & Projects</h2>
                 </div>
-                <div className="grid md:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {[
                     {
                       title: "Red Team Operations",
@@ -104,35 +102,34 @@ function Home() {
                 </div>
               </section>
 
-              <section>
-                <div className="flex items-center gap-2 text-lg mb-3">
-                  <Bug className="w-5 h-5 text-green-500" />
-                  <h2>Bug Bounty Achievements</h2>
+              <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <div className="flex items-center gap-2 text-lg mb-3">
+                    <Bug className="w-5 h-5 text-green-500" />
+                    <h2>Bug Bounty Achievements</h2>
+                  </div>
+                  <ul className="list-disc list-inside space-y-2 opacity-80 text-sm">
+                    {[
+                      "Hall of Fame on HackerOne",
+                      "Multiple CVEs Published",
+                      "Top Bug Bounty Hunter 2023"
+                    ].map((achievement, index) => (
+                      <li key={index}>{achievement}</li>
+                    ))}
+                  </ul>
                 </div>
-                <ul className="list-disc list-inside space-y-2 opacity-80">
-                  {[
-                    "Hall Of Fame Apple Bug Bounty 2024",
-                    "Bank BRI Bug Bounty 2020 & 2023",
-                    "Kominfo 2021 & 2023",
-                    "Google Bug Bounty Program 2022",
-                    "IndoGold Bug Bounty Program (RedStorm)"
-                  ].map((achievement, index) => (
-                    <li key={index}>{achievement}</li>
-                  ))}
-                </ul>
-              </section>
 
-              <section>
-                <div className="flex items-center gap-2 text-lg mb-3">
-                  <Brain className="w-5 h-5 text-green-500" />
-                  <h2>Certifications</h2>
+                <div>
+                  <div className="flex items-center gap-2 text-lg mb-3">
+                    <Brain className="w-5 h-5 text-green-500" />
+                    <h2>Certifications</h2>
+                  </div>
+                  <ul className="list-disc list-inside space-y-2 opacity-80 text-sm">
+                    <li>OSCP (Offensive Security Certified Professional)</li>
+                    <li>OSCE (Offensive Security Certified Expert)</li>
+                    <li>CRTO (Certified Red Team Operator)</li>
+                  </ul>
                 </div>
-                <ul className="list-disc list-inside space-y-2 opacity-80">
-                  <li>CRTP (Certified Red Team Professional)</li>
-                  <li>eWPTX (e-Learn Web Application Penetration Tester eXtreme)</li>
-                  <li>CEH Master (Certified Ethical Hacker Master)</li>
-                  <li>eJPT (elearn Junior Penetration Tester)</li>
-                </ul>
               </section>
 
               <section>
@@ -141,10 +138,10 @@ function Home() {
                   <h2>Contact</h2>
                 </div>
                 <div className="flex gap-4">
-                  <a href="https://github.com/aliusman67" className="hover:text-green-400 transition-colors" target="_blank" rel="noopener noreferrer">
+                  <a href="https://github.com" className="hover:text-green-400 transition-colors">
                     <Github className="w-6 h-6" />
                   </a>
-                  <a href="https://www.linkedin.com/in/ali-usman-146a811b0" className="hover:text-green-400 transition-colors" target="_blank" rel="noopener noreferrer">
+                  <a href="https://linkedin.com" className="hover:text-green-400 transition-colors">
                     <Linkedin className="w-6 h-6" />
                   </a>
                 </div>
@@ -182,14 +179,14 @@ function Home() {
           <div className="terminal-dot bg-red-500"></div>
           <div className="terminal-dot bg-yellow-500"></div>
           <div className="terminal-dot bg-green-500"></div>
-          <span className="ml-2 text-sm opacity-50">Ghroot67@aliusman:~# </span>
+          <span className="ml-2 text-sm opacity-50">terminal@aliusman:~$</span>
         </div>
 
         <div className="space-y-4 p-4 max-h-[80vh] overflow-y-auto" ref={containerRef}>
           {commands.map((cmd, index) => (
             <div key={index}>
               <div className="flex items-center">
-                <span className="command-prompt">Ghroot67@aliusman:~# </span>
+                <span className="command-prompt">terminal@aliusman:~$ </span>
                 <span className="ml-2">{cmd}</span>
               </div>
               {renderCommandOutput(cmd)}
@@ -197,15 +194,15 @@ function Home() {
           ))}
           
           {showPrompt && (
-            <div className="flex items-center">
-              <span className="command-prompt">Ghroot67@aliusman:~# </span>
+            <div className="flex items-center flex-wrap">
+              <span className="command-prompt">terminal@aliusman:~$ </span>
               <input
                 ref={inputRef}
                 type="text"
                 value={currentCommand}
                 onChange={(e) => setCurrentCommand(e.target.value)}
                 onKeyPress={handleKeyPress}
-                className="ml-2 bg-transparent outline-none border-none text-green-500 flex-1"
+                className="ml-2 bg-transparent outline-none border-none text-green-500 flex-1 min-w-[200px]"
                 autoFocus
               />
             </div>
